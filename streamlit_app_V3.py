@@ -9,14 +9,14 @@ from nltk import sent_tokenize
 from transformers import AutoModelForSeq2SeqLM
 
 new_model = AutoModelForSequenceClassification.from_pretrained(
-    "./Pretrained_Model_Best/"
+    "./Pretrained_Classification_Model/"
 )
 new_tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
 trainer = Trainer(model=new_model, tokenizer=new_tokenizer)
 
 # Load the saved model
 summary_tokenizer = AutoTokenizer.from_pretrained("t5-small")
-summary_model = AutoModelForSeq2SeqLM.from_pretrained("./Summary_Model_V1/")
+summary_model = AutoModelForSeq2SeqLM.from_pretrained("./Pretrained_Summary_Model/")
 
 def get_prediction(text):
     encoding = new_tokenizer(text, return_tensors="pt")  ## Try removing return tensors
